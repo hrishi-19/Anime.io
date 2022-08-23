@@ -1,0 +1,33 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.header-main{
+    display: flex;
+    width: 100%;
+    background-color: #0a0a0a;
+}
+.header-main .header{
+    width: 100%;
+}
+.header-main .header .navigation-bar{
+    width: 100%;
+    padding: 15px
+}
+.nav-item{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    color:#ffffff;
+    font-family:sans-serif
+
+
+}
+.nav-item p{
+    font-size: 2rem;
+    font-weight: bold;
+}
+.nav-item h4{
+    margin-left: 25px;
+}
