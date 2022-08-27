@@ -1,10 +1,13 @@
 import React from "react";
-
+import Navigation from "../components/asideNav";
+import Header from '../components/header';
 function Home(){
     return(
         <>
-       home
+        <Header show={true}/>
+        <Navigation/>
         </>
+        
     )
 }
 export default Home

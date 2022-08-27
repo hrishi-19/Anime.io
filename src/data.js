@@ -8,7 +8,7 @@ const data=[
     {
         heading:"Genre",
         img:``,
-        desc:" Looking for something more specific? Try searching by genres. Start searching by genres ... Choose from a wide range of 13 different genres ",
+        desc:" Looking for something more specific? Try searching by genres. Start searching by genres ... Choose from a wide range of different genres ",
         left:false
     },
     {
