@@ -1,10 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import {Routes, Route} from 'react-router-dom';
 import Landing from './pages/landing-page';
+import Home from './pages/home';
+import Header from './components/header';
 
 function App() {
   return (
-   <Landing/>
+    <>
+    <Header/>
+    <Routes>
+      <Route path='/' element={<Landing />} />
+      <Route path='/home' element={<Home />} />
+
+    </Routes>
+    </>
   );
 }
 
