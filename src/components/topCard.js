@@ -1,11 +1,11 @@
 import React from "react";
 import '../css/scroller.css';
-export default function TopCard({val}){
+export default function TopRateCard({val}){
 
     let title=val.title
     return(
        <div className="item">
-        <div className="img-bg" style={{backgroundImage:`url(${val.images.webp.large_image_url})`}}></div>
+        <div className="img-bg" style={{backgroundImage:`url(${val.images.webp.large_image_url} )`}}></div>
         <div className="info-box sm:px-3 sm:py-6 px-1 py-2">
             <p className="text-lg text-slate-700 font-semibold  w-full text-start">{title}</p>
            <div className="flex justify-between align-center">

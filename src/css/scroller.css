@@ -1,11 +1,12 @@
 .wrapper{
     padding: 15px 20px;
     width: auto;
-    height: 475px;
+    height: 485px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     overflow-x: auto;
+    overflow-y: hidden;
 }
 .wrapper::-webkit-scrollbar{
    height: 4px;
