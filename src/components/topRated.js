@@ -1,23 +1,26 @@
 import { React, useState, useEffect } from "react";
-import getTop from "../service/gettopList";
+import axios from "axios";
 import'../css/scroller.css';
-import TopRateCard from "./topCard";
+import AnimeCard from './animeCard'
 
 
 export default function TopAnime() {
     const [topList, setTop] = useState([])
    
     const list = topList.map((top, index) => {
-        return <TopRateCard val={top} key={index} />
+        return <AnimeCard id={top.mal_id} img={top.images.webp.large_image_url} title={top.title}  score={top.score} key={index} />
     })
+    async function getData(){
+        return await axios.get("https://api.jikan.moe/v4/top/anime").then(res=>res.data)
+        
+    }
     useEffect(() => {
-        getTop().then(topdata => {
+        getData().then(topdata => {
             setTop(topdata.data)
         })
 
 
     }, [])
-
     return (
         <div className="w-full ">
             <div className="flex w-full flex-col px-5 py-6 ">
