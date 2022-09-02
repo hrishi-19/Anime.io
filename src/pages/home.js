@@ -1,17 +1,13 @@
-import { React } from "react";
-import Genre from "../components/genre";
+import { React,lazy,Suspense } from "react";
 import Search from "../components/searchBar";
 import TopAnime from "../components/topRated";
 import '../css/scroller.css';
+const Genre=lazy(()=>import('../components/genre'))
 
 
 
 function Home() {
     const genres = [
-        {
-            id: 42,
-            name: "Seinen"
-        },
         {
             id: 1,
             name: "Action"
@@ -21,14 +17,6 @@ function Home() {
             name: "Adventure"
         },
         {
-            id: 27,
-            name: "Shoumen"
-        },
-        {
-            id: 22,
-            name: "Romance"
-        },
-        {
             id: 10,
             name: "Fantasy"
         },
@@ -36,20 +24,27 @@ function Home() {
             id: 7,
             name: "Myserty"
         },
-        {
-            id: 36,
-            name: "Slice of life"
-        },
+       
     ]
-    const genreType = genres.map((genre, index) => {
-        return <Genre key={index} id={genre.id} name={genre.name} />
-    })
 
     return (
         <>
             <Search />
             <TopAnime />
-            {genreType}
+           {
+             genres.map((genre, index) => {
+                return <Suspense fallback={<div className="w-full ">
+                <div className="flex w-full flex-col px-5 py-6 ">
+                    <div className="wrapper ">
+                        <h1>Loading.....</h1>
+                    </div>
+                </div>
+            </div>}>
+                    <Genre key={index} id={genre.id} name={genre.name}/>
+                    </Suspense> 
+            })
+           }
+           
         </>
 
     )
