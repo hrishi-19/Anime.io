@@ -1,6 +1,7 @@
 import { React, useState, useEffect,lazy,Suspense} from "react";
 import axios from "axios";
 import '../css/scroller.css';
+import DummyBox from "./dummybox";
 const AnimeCard=lazy(()=>import('../components/animeCard'))
 
 
@@ -37,7 +38,7 @@ export default function Genre(props) {
                     <div className="wrapper ">
                         {
                             genreList.map((anime, index) => {
-                                return <Suspense fallback={<h1>Loading...</h1>}>
+                                return <Suspense fallback={<DummyBox/>}>
                                     <AnimeCard id={anime.mal_id} img={anime.image_url} title={anime.title} score={anime.score} key={index} />
                                 </Suspense>
                             })

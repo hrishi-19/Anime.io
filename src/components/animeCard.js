@@ -1,10 +1,9 @@
 import React from "react";
-import axios from "axios";
 import {useNavigate} from"react-router-dom";
 import '../css/scroller.css';
 export default function AnimeCard(props){
     const navigate=useNavigate()
-    let color=props.score!=undefined?props.score>8?"Green":props.score>5?"orange":"red":""
+    let color=props.score!==undefined?props.score>8?"Green":props.score>5?"orange":"red":""
     
     return(
        <div className="item">
@@ -15,7 +14,7 @@ export default function AnimeCard(props){
            <button  onClick={()=>navigate(`/anime/${props.id}`)} className="p-2 text-md sm:text-lg text-white  bg-slate-700 w-2/6 rounded-lg text-center shadow-lg shadow-slate-300">
             Check
             </button>
-           {props.score!=undefined && <span style={{color:color}}className=" p-2  text-md sm:text-lg font-semibold">Score:{props.score}</span>}
+           {props.score!==undefined && <span style={{color:color}}className=" p-2  text-md sm:text-lg font-semibold">Score:{props.score}</span>}
            </div>
         </div>
         
