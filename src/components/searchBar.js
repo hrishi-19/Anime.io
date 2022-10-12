@@ -8,15 +8,15 @@ export default function Search() {
     const [animeList, setList] = useState([])
 
     const matches = animeList.map((anime, index) => {
-        return <AnimeCard id={anime.mal_id} img={anime.image_url} title={anime.title}  score={anime.score} key={index} />
+        return <AnimeCard id={anime.mal_id} img={anime.images.jpg.image_url} title={anime.title}  score={anime.score} key={index} />
     })
 
     const fetchAnime = async (anime_name) => {
         const data = await fetch(
-            `https://api.jikan.moe/v3/search/anime?q=${anime_name}&order_by=title&sort=asc&limit=50`
+            `https://api.jikan.moe/v4/anime?q=${anime_name}&sort=asc&limit=50`
         ).then((res) => res.json())
-
-        setList(data.results)
+            console.log(data.data)
+        setList(data.data)
     };
     useEffect(() => {
         setAnime(name)

@@ -10,12 +10,14 @@ export default function Genre(props) {
     const [genreList, setGenre] = useState([])
 
     
-    async function getData() {
-        return await axios.get(`https://api.jikan.moe/v3/search/anime?q=&page=1&genre=${props.id}&order_by=popularity&sort=desc&limit=20`)
+    function getData() {
+        return axios.get(`https://api.jikan.moe/v4/anime?q=&genres=${props.id}&sort=desc&limit=20`)
         .then((res) =>{
-            
+            console.log(res.data)
             if(res.status===200){
-                return res.data
+                return res.data.data
+            }if(res.status===429) {
+               console.log('429 occured')
             }
             
         })
@@ -23,8 +25,7 @@ export default function Genre(props) {
     }
     useEffect(() => {
         getData().then(animeData => {
-        
-                setGenre(animeData.results)
+                setGenre(animeData)
             
         })
 
@@ -39,7 +40,7 @@ export default function Genre(props) {
                         {
                             genreList.map((anime, index) => {
                                 return <Suspense fallback={<DummyBox/>}>
-                                    <AnimeCard id={anime.mal_id} img={anime.image_url} title={anime.title} score={anime.score} key={index} />
+                                    <AnimeCard id={anime.mal_id} img={anime.images.jpg.image_url} title={anime.title} score={anime.score} key={index} />
                                 </Suspense>
                             })
                         }
