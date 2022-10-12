@@ -11,12 +11,20 @@ export default function Search() {
         return <AnimeCard id={anime.mal_id} img={anime.images.jpg.image_url} title={anime.title}  score={anime.score} key={index} />
     })
 
-    const fetchAnime = async (anime_name) => {
-        const data = await fetch(
+    const fetchAnime =(anime_name) => {
+       fetch(
             `https://api.jikan.moe/v4/anime?q=${anime_name}&sort=asc&limit=50`
-        ).then((res) => res.json())
-            console.log(data.data)
-        setList(data.data)
+        ).then((res) =>{
+            if(!res.ok){
+                throw Error("No Results")
+            }
+            return res.json()
+        }).then(response=> {
+            setList(response.data)
+           
+        })
+        .catch(err=>console.log(err.message))
+       
     };
     useEffect(() => {
         setAnime(name)
@@ -30,7 +38,7 @@ export default function Search() {
         <>
             <div className="w-full  mt-12 ">
                 <div className="w-full sm:w-6/12  h-full float-right py-3 ">
-                    <input onInput={(e) => setName(e.target.value)} className=" text-lg p-3 outline-none w-9/12 " type="text" placeholder="Search...." />
+                    <input onInput={(e) => setName(e.target.value) } className=" text-lg p-3 outline-none w-9/12 " type="text" placeholder="Search...." />
                     <button onClick={handleSearch} className="p-2 sm:px-3 sm:py-2  text-md sm:text-lg  text-white bg-slate-600 rounded-md ">Search</button>
                 </div>
                 {matches.length > 0 ? <div className="w-full ">
@@ -40,7 +48,7 @@ export default function Search() {
                             {matches}
                         </div>
                     </div>
-                </div> : ''}
+                </div> : <h4 class='text-slate-500 text-md ml-6'>No matches found</h4>}
 
 
 
