@@ -29,7 +29,7 @@ export default function Genre(props) {
     useEffect(() => {
            setTimeout(function(){
             getData()
-           },1000)
+           },props.time)
 
 
     }, [])

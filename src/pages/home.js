@@ -21,7 +21,7 @@ function Home() {
                     </div>
                 </div>
             </div>}>
-                <Genre id={1} name={'Action'} />
+                <Genre id={1} name={'Action'} time={1000}/>
             </Suspense>
             <Suspense fallback={<div className="w-full ">
                 <div className="flex w-full flex-col px-5 py-6 ">
@@ -30,7 +30,7 @@ function Home() {
                     </div>
                 </div>
             </div>}>
-                <Genre id={2} name={'Adventure'} />
+                <Genre id={2} name={'Adventure'} time={2000} />
             </Suspense>
             <Suspense fallback={<div className="w-full ">
                 <div className="flex w-full flex-col px-5 py-6 ">
@@ -39,7 +39,7 @@ function Home() {
                     </div>
                 </div>
             </div>}>
-                <Genre id={10} name={'Fantasy'} />
+                <Genre id={10} name={'Fantasy'} time={3000}/>
             </Suspense>
             <Suspense fallback={<div className="w-full ">
                 <div className="flex w-full flex-col px-5 py-6 ">
@@ -48,7 +48,7 @@ function Home() {
                     </div>
                 </div>
             </div>}>
-                <Genre id={7} name={'Myserty'} />
+                <Genre id={7} name={'Myserty'}time={4000}/>
             </Suspense>
 
 
