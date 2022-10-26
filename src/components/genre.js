@@ -12,7 +12,7 @@ export default function Genre(props) {
     
     function getData() {
         
-            fetch(`https://api.jikan.moe/v4/anime?q=&genres=${props.id}&sort=desc&limit=20`)
+            fetch(`https://api.jikan.moe/v4/anime?q=&genres=${props.id}&sort=asc&limit=20`)
             .then(res=>{
                 if(!res.ok){
                     throw Error("couldnot fetch details")

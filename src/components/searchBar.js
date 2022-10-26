@@ -6,12 +6,15 @@ export default function Search() {
     const [name, setName] = useState('')
     const [anime_name, setAnime] = useState('')
     const [animeList, setList] = useState([])
+    const[msg,setMsg]=useState('')
+    let flag=false;
 
     const matches = animeList.map((anime, index) => {
         return <AnimeCard id={anime.mal_id} img={anime.images.jpg.image_url} title={anime.title}  score={anime.score} key={index} />
     })
 
     const fetchAnime =(anime_name) => {
+        setMsg('Loading...')
        fetch(
             `https://api.jikan.moe/v4/anime?q=${anime_name}&sort=asc&limit=50`
         ).then((res) =>{
@@ -21,6 +24,7 @@ export default function Search() {
             return res.json()
         }).then(response=> {
             setList(response.data)
+            flag=true;
            
         })
         .catch(err=>console.log(err.message))
@@ -48,7 +52,7 @@ export default function Search() {
                             {matches}
                         </div>
                     </div>
-                </div> : <h4 class='text-slate-500 text-md ml-6'>No matches found</h4>}
+                </div> : flag?<h4 class='text-slate-500 text-md ml-6'>{msg}</h4>:''}
 
 
 
