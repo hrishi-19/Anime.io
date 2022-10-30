@@ -24,7 +24,7 @@ export default function Search() {
             setList(response.data)
            
             setisPending(false)
-            console.log(animeList)
+          
            
         })
         .catch(err=>console.log(err.message))
