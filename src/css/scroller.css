@@ -25,6 +25,7 @@
     flex-direction: column;
     justify-content: center;
     margin:0 15px;
+    
 
    
 }
@@ -63,4 +64,15 @@
     
        
     }
+}
+.dummyBox{
+    width: 300px;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+   
+    
+}
+.dummyBox .dummy-content span{
+    width: 100%;
 }

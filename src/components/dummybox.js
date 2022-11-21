@@ -1,20 +1,23 @@
 import React from "react";
 import "../css/scroller.css";
-export default function DummyBox(){
-    return(
-       
-        <div className="item">
-        <div className="img-bg" style={{backgroundColor:"gray"}}></div>
-        <div className="info-box sm:px-3 sm:py-6 px-1 py-2">
-            <p className="text-lg text-slate-700 font-semibold  w-full text-start"></p>
-           <div className="flex justify-between align-center">
-           <button  className="p-2 text-md sm:text-lg text-white  bg-slate-700 w-2/6 rounded-lg text-center shadow-lg shadow-slate-300">
-            Check
-            </button>
-           </div>
+export default function DummyBox() {
+    return (
+
+        <div className="dummyBox bg-slate-500/30 ml-5 ">
+            <div className="dummy-img bg-slate-500/20 w-full h-3/5"></div>
+            <div className="dummy-content w-full h-2/5 py-5 px-3 flex flex-col justify-between">
+                <p className="p-3 bg-slate-500/30"></p>
+                <div className="w-full  h-1/3 flex justify-between items-center">
+
+                <div className="bg-slate-500/30 w-20 h-12 rounded-lg"></div>
+                <p className="bg-slate-500/30 h-10 w-20"></p>
+
+                </div>
+
+            </div>
+
+
         </div>
-        
-       </div>
-       
+
     )
 }
