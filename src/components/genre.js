@@ -1,8 +1,7 @@
-import { React, useState, useEffect,lazy,Suspense} from "react";
-import axios from "axios";
+import { React, useState, useEffect} from "react";
 import '../css/scroller.css';
 import DummyBox from "./dummybox";
-const AnimeCard=lazy(()=>import('../components/animeCard'))
+import AnimeCard from "./animeCard";
 
 
 
@@ -12,14 +11,16 @@ export default function Genre(props) {
     
     function getData() {
         
-            fetch(`https://api.jikan.moe/v4/anime?q=&genres=${props.id}&sort=asc&limit=20`)
+            fetch(`https://api.jikan.moe/v4/anime?q=genres=${props.id}&sort=asc&limit=15`)
             .then(res=>{
                 if(!res.ok){
                     throw Error("couldnot fetch details")
                 }
                 return res.json()
             }).then(response=>{
-               setGenre(response.data)
+                
+                const sortedArray=response.data.sort((a,b)=>b.score-a.score)
+               setGenre(sortedArray)
             }).catch(err=>{
                 console.log(err)
             })
@@ -41,9 +42,9 @@ export default function Genre(props) {
                     <div className="wrapper ">
                         {genreList&&
                             genreList.map((anime, index) => {
-                                return <Suspense fallback={<DummyBox/>}>
-                                    <AnimeCard id={anime.mal_id} img={anime.images.jpg.image_url} title={anime.title} score={anime.score} key={index} />
-                                </Suspense>
+                                return  <AnimeCard id={anime.mal_id} img={anime.images.jpg.image_url} title={anime.title} score={anime.score} key={anime.mal_id} />
+                                   
+                                
                             })
                         }
                         {!genreList && [1,2,3,4,5].map(n=><DummyBox key={n}/>)}
