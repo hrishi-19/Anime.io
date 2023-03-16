@@ -131,7 +131,7 @@ export default function AnimePage() {
                             Genres:
                             {
                                 animeDetails.genres.map((item,index)=>{
-                                    return  <span className="p-2 mx-2 mt-3 text-md sm:text-lg text-white  bg-slate-700  rounded-lg text-center shadow-lg shadow-slate-300">{item} </span>
+                                    return  <span  key={index} className="p-2 mx-2 mt-3 text-md sm:text-lg text-white  bg-slate-700  rounded-lg text-center shadow-lg shadow-slate-300">{item} </span>
                                 })
                             }
                         </div>
