@@ -22,6 +22,7 @@ export default function Search() {
             return res.json()
         }).then(response=> {
             setList(response.data)
+            sessionStorage.setItem("animeList",JSON.stringify(response.data))
            
             setisPending(false)
           
@@ -30,6 +31,13 @@ export default function Search() {
         .catch(err=>console.log(err.message))
        
     };
+    useEffect(()=>{
+        // console.log(localStorage.getItem("animeList"))
+        if(sessionStorage.getItem("animeList")){
+            setList(JSON.parse(sessionStorage.getItem("animeList")))
+        }
+
+    },[])
     useEffect(() => {
        
         setAnime(name)
