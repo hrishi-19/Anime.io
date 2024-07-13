@@ -9,30 +9,27 @@ export default function Genre(props) {
     const [genreList, setGenre] = useState(null)
 
     
-    function getData() {
+    async function getData() {
         
-            fetch(`https://api.jikan.moe/v4/anime?q=genres=${props.id}&sort=asc&limit=15`)
-            .then(res=>{
-                if(!res.ok){
-                    throw Error("couldnot fetch details")
-                }
-                return res.json()
-            }).then(response=>{
-                
+           try{
+            const result = await fetch(`https://api.jikan.moe/v4/anime?q=genres=${props.id}&sort=asc&limit=15`);
+            if(result.status === 200){
+                const response = await result.json()
                 const sortedArray=response.data.sort((a,b)=>b.score-a.score)
-               setGenre(sortedArray)
-            }).catch(err=>{
-                console.log(err)
-            })
+                setGenre(sortedArray)
+            }
+            else if(result.status === 429){
+                setTimeout(getData,props.time)
+            }
+           }catch(error){
+            // error occured
+           }
+
 
 
     }
     useEffect(() => {
-           setTimeout(function(){
-            getData()
-           },props.time)
-
-
+           getData()
     }, [])
     return (
         <>
