@@ -14,16 +14,17 @@ export default function Search() {
     const fetchAnime =(anime_name) => {
         
        fetch(
-            `https://api.jikan.moe/v4/anime?q=${anime_name}&sort=asc&limit=50`
+            `https://api.jikan.moe/v4/anime?q=${anime_name}&sort=asc&limit=25`
         ).then((res) =>{
             if(!res.ok){
                 throw Error("No Results")
             }
             return res.json()
         }).then(response=> {
-            setList(response.data)
-            sessionStorage.setItem("animeList",JSON.stringify(response.data))
-           
+            if(response.data){
+                setList(response.data)
+                sessionStorage.setItem("animeList",JSON.stringify(response.data))
+            }
             setisPending(false)
           
            
